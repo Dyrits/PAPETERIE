@@ -16,12 +16,12 @@ public class DBConnection {
         try {
             DriverManager.registerDriver(new SQLServerDriver());
         } catch (SQLException exception) {
-            throw  new DALException("Impossible de monter le driver en mémoire.", exception);
+            throw  new DALException("Erreur. Impossible de monter le driver en mémoire.", exception);
         }
         try {
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException exception) {
-            throw  new DALException("Problème avec la chaîne de connexion.", exception);
+            throw  new DALException("Erreur lors de la tentative de connexion. Vérifiez la chaîne de connexion.", exception);
         }
     }
 

@@ -32,7 +32,7 @@ public class ArticleDaoJdbcImpl {
                 article = initialize(resultSet);
             }
         } catch (SQLException exception) {
-            throw new DALException("Sélection avec l'identifiant " + identifiant + " échouée." , exception);
+            throw new DALException("Erreur lors de la sélection de l'article avec l'identifiant " + identifiant + "." , exception);
         }
         DBConnection.disconnect(connection);
         return article;
@@ -54,7 +54,7 @@ public class ArticleDaoJdbcImpl {
                 articles.add(article);
             }
         } catch (SQLException exception) {
-            throw new DALException("Sélection des résultats échouée." , exception);
+            throw new DALException("Erreur lors de la sélection des articles." , exception);
         }
         DBConnection.disconnect(connection);
         return articles;
