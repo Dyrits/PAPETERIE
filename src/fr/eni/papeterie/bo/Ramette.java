@@ -19,6 +19,10 @@ public class Ramette extends Article {
         setGrammage(grammage);
     }
 
+    public Ramette(int grammage) {
+        setGrammage(grammage);
+    }
+
     @Override
     public String toString() {
         return super.toString() +

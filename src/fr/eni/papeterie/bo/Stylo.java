@@ -19,6 +19,10 @@ public class Stylo extends Article {
         setCouleur(couleur);
     }
 
+    public Stylo(String couleur) {
+        setCouleur(couleur);
+    }
+
     @Override
     public String toString() {
         return super.toString() +
