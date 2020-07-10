@@ -10,7 +10,6 @@ public class DBConnection {
     static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=PAPETERIE_DB";
     static final String USER = "sa";
     static final String PASSWORD = "Pa$$w0rd";
-    Connection connection = null;
 
     public static Connection connect() throws DALException {
         try {

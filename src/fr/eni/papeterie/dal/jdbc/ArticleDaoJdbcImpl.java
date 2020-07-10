@@ -48,10 +48,8 @@ public class ArticleDaoJdbcImpl {
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_ALL);
             ResultSet resultSet = statement.executeQuery();
-            Article article = null;
             while (resultSet.next()) {
-                article = initialize(resultSet);
-                articles.add(article);
+                articles.add(initialize(resultSet));
             }
         } catch (SQLException exception) {
             throw new DALException("Erreur lors de la sélection des articles." , exception);
