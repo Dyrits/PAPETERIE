@@ -25,11 +25,11 @@ public class DBConnection {
         }
     }
 
-    public static void disconnect(Connection connection) {
+    public static void disconnect(Connection connection) throws DALException {
         try {
             connection.close();
         } catch (SQLException exception) {
-            exception.printStackTrace();
+            throw  new DALException("Erreur lors de la déconnexion.", exception);
         }
     }
 }
