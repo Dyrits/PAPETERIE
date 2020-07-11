@@ -19,6 +19,9 @@ public class ArticleDaoJdbcImpl {
             "UPDATE Articles " +
                 "SET reference = ?, marque = ?, designation = ?, prixUnitaire = ?, qteStock = ?, grammage = ?, couleur = ?, type = ? " +
                 "WHERE idArticle = ?";
+    private static final String INSERT =
+            "INSERT INTO Articles(reference, marque, designation, prixUnitaire, qteStock, grammage, couleur, type) " +
+                "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String DELETE = "DELETE FROM Articles WHERE idArticle = ?";
 
 
@@ -54,13 +57,16 @@ public class ArticleDaoJdbcImpl {
     }
 
     /**
-     * @param article Article | Article correspondant à la ligne à mettre à jour.
+     * Mise à jour des données de la table via une requête DML INSERT ou UPDATE.
+     * @param article Article | Article correspondant à la ligne à mettre à jour ou ajouter.
+     * @param insert Booléen | "true" si la requête est de type INSERT. "false" si la requête est de type UPDATE.
      * @throws DALException Exception.
      */
-    public void update(Article article) throws DALException {
+    private void DML(Article article, boolean insert) throws DALException {
         Connection connection = DBConnection.connect();
         try {
-            PreparedStatement statement = connection.prepareStatement(UPDATE);
+            PreparedStatement statement = insert ?
+                    connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS) : connection.prepareStatement(UPDATE);
             statement.setString(1, article.getReference());
             statement.setString(2, article.getMarque());
             statement.setString(3, article.getDesignation());
@@ -70,7 +76,7 @@ public class ArticleDaoJdbcImpl {
                 Stylo stylo = (Stylo) article;
                 statement.setNull(6, Types.INTEGER); // Valeur nulle pour le grammage.
                 statement.setString(7, stylo.getCouleur());
-                statement.setString(9, "STYLO"); // Valeur nulle pour la couleur.
+                statement.setString(8, "STYLO"); // Valeur nulle pour la couleur.
             }
             else if (article instanceof Ramette) {
                 Ramette ramette = (Ramette) article;
@@ -78,13 +84,30 @@ public class ArticleDaoJdbcImpl {
                 statement.setNull(7, Types.VARCHAR); // Valeur nulle pour la couleur.
                 statement.setString(8, "RAMETTE"); // Valeur nulle pour la couleur.
             }
-            statement.setInt(9, article.getIdArticle());
-            statement.executeUpdate();
+            if (!insert) {
+                statement.setInt(9, article.getIdArticle());
+                statement.executeUpdate();
+            }
+            else  {
+                int rows = statement.executeUpdate();
+                if (rows == 1) {
+                    ResultSet resultSet = statement.getGeneratedKeys();
+                    if (resultSet.next()) { article.setIdArticle(resultSet.getInt(1)); }
+                }
+            }
             statement.close();
         } catch (SQLException exception) {
             throw new DALException("Erreur lors de la mise à jour des données.", exception);
         }
         DBConnection.disconnect(connection);
+    }
+
+    public void update(Article article) throws DALException {
+        DML(article, false);
+    }
+
+    public void insert(Article article) throws DALException {
+        DML(article, true);
     }
 
     /**
