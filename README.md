@@ -57,9 +57,9 @@ Les fichiers DALException.java et AppliTestDAL.java ont été fournis avec l'én
 </details>
 
 ### Statut
-Partie 1 - Terminé  
-Partie 2 - En cours  
+Partie 1 - Terminée  
+Partie 2 - Terminée 
 
 #### Dernière mise à jour
-10/07/2020  
-(README | 10/07/2020)
+11/07/2020  
+(README | 11/07/2020)

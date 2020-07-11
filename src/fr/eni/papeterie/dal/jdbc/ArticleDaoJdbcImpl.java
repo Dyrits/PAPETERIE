@@ -183,7 +183,7 @@ public class ArticleDaoJdbcImpl {
             if (type.equals("STYLO")) {
                 article = new Stylo(resultSet.getString("couleur"));
             } else if (type.equals("RAMETTE")) {
-                article = new Ramette(resultSet.getInt("ramette"));
+                article = new Ramette(resultSet.getInt("grammage"));
             }
             assert article != null;
             article.setIdArticle(resultSet.getInt("idArticle"));
