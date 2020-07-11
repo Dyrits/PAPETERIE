@@ -46,7 +46,7 @@ public class ArticleDaoJdbcImpl {
             statement.setInt(1, identifiant);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                article = initialize(resultSet);
+                article = initializeWith(resultSet);
             }
             statement.close();
         } catch (SQLException exception) {
@@ -143,7 +143,7 @@ public class ArticleDaoJdbcImpl {
             }
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                articles.add(initialize(resultSet));
+                articles.add(initializeWith(resultSet));
             }
             statement.close();
         } catch (SQLException exception) {
@@ -176,7 +176,7 @@ public class ArticleDaoJdbcImpl {
      * @return Article | Article incluant les données du set de résultat.
      * @throws DALException Exception
      */
-    private Article initialize(ResultSet resultSet) throws DALException {
+    private Article initializeWith(ResultSet resultSet) throws DALException {
         Article article = null;
         try {
             String type = resultSet.getString("type").trim().toUpperCase();
