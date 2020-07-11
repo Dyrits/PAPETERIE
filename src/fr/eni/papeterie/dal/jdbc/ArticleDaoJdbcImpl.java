@@ -62,7 +62,7 @@ public class ArticleDaoJdbcImpl {
      * @param insert Booléen | "true" si la requête est de type INSERT. "false" si la requête est de type UPDATE.
      * @throws DALException Exception.
      */
-    private void DML(Article article, boolean insert) throws DALException {
+    private void updateOrInsert(Article article, boolean insert) throws DALException {
         Connection connection = DBConnection.connect();
         try {
             PreparedStatement statement = insert ?
@@ -103,11 +103,11 @@ public class ArticleDaoJdbcImpl {
     }
 
     public void update(Article article) throws DALException {
-        DML(article, false);
+        updateOrInsert(article, false);
     }
 
     public void insert(Article article) throws DALException {
-        DML(article, true);
+        updateOrInsert(article, true);
     }
 
     /**
