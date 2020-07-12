@@ -1,5 +1,7 @@
 package fr.eni.papeterie.bo;
 
+import fr.eni.papeterie.bll.BLLException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +17,14 @@ public class Panier {
      * Ajoute une ligne avec un article et sa quantité au panier et ajuste le stock.
      * @param article Article | Article.
      * @param qte int | Quantité.
+     * @throws BOException Exception
      */
-    public void addLigne(Article article, int qte) {
-        article.setQteStock(article.getQteStock() - qte);
+    public void addLigne(Article article, int qte) throws BOException {
+        int newQteStock = article.getQteStock() - qte;
+        if (newQteStock < 0) {
+            throw new BOException("La quantité d'article en stock est insuffisante.");
+        }
+        article.setQteStock(newQteStock);
         lignesPanier.add(new Ligne(article, qte));
         setMontant();
     }
@@ -26,10 +33,15 @@ public class Panier {
      * Modifie la quantité d'article pour une ligne spécifiée et ajuste le stock.
      * @param index index | Index de la ligne.
      * @param newQte int |  Nouvelle quantité.
+     * @throws BOException Exception
      */
-    public void updateLigne(int index, int newQte) {
+    public void updateLigne(int index, int newQte) throws BOException {
         Article article = lignesPanier.get(index).getArticle();
-        article.setQteStock(article.getQteStock() + (lignesPanier.get(index).getQte() - newQte));
+        int newQteStock = article.getQteStock() + (lignesPanier.get(index).getQte() - newQte);
+        if (newQteStock < 0) {
+            throw new BOException("La quantité d'article en stock est insuffisante.");
+        }
+        article.setQteStock(newQteStock);
         lignesPanier.get(index).setQte(newQte);
         setMontant();
     }

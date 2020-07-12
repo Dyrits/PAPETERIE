@@ -6,7 +6,7 @@
 ENI | Le développement en couches et la persistance des données avec Java SE  
 ~ [Module 3 - Développement de la couche BO](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2003%20-%20Enonc%C3%A9%20TP%20-%20Papeterie%20-%20Partie%201)  
 ~ [Module 4 - Développement de la couche DAL avec JDBC](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2004%20-%20Enonc%C3%A9s%20TP%20-%20Papeterie)  
-
+~ [Module 5 - Développement de la couche BLL]()
 
 ### Énoncés (par l'ENI)
 
@@ -50,6 +50,15 @@ ENI | Le développement en couches et la persistance des données avec Java SE
 - Vérifier votre solution avec la classe fr.eni.papeterie.dal.AppliTestDAL fournie.
 
 </details>
+<details markdown="block">
+<summary>Partie 4</summary> 
+
+- À l’aide du diagramme de classes fourni, implémenter la couche BLL pour que les exigences suivantes soient respectées :
+    - Les attributs des articles sont obligatoires.
+    - Le grammage pour une ramette et la quantité en stock attendent des valeurs positives.
+    - Un catalogue est une liste d’articles gérée en mémoire et extraite à partir d’une source de données.
+
+</details>
 
 > Plus de détails sont disponibles dans les fichiers au format PDF correspondant à chaque énoncé.
 
@@ -76,6 +85,13 @@ Les fichiers DALException.java et AppliTestDAL.java ont été fournis avec l'én
 <summary>Partie 3</summary> 
 
 Le fichier AppliTestDAL.java a été fourni avec l'énoncé.
+
+</details>
+<details markdown="block">
+<summary>Partie 4</summary> 
+
+Le fichier AppliTestDLL.java a été fourni avec l'énoncé.  
+En plus des instructions de base, une gestion des exceptions a été ajoutées au sein du package BO.
 
 </details>
 

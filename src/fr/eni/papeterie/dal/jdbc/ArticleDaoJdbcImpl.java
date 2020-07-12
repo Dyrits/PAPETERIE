@@ -65,10 +65,11 @@ public class ArticleDaoJdbcImpl implements ArticleDAO {
     private void updateOrInsert(Article article, boolean insert) throws DALException {
         Connection connection = JdbcTools.connect();
         try {
-            PreparedStatement statement =
-                    insert ?
-                            connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS) : 
-                            connection.prepareStatement(UPDATE);
+            PreparedStatement statement = insert ?
+                    // Insert:
+                    connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS) :
+                    // Update:
+                    connection.prepareStatement(UPDATE);
             statement.setString(1, article.getReference());
             statement.setString(2, article.getMarque());
             statement.setString(3, article.getDesignation());
