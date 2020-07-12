@@ -1,14 +1,14 @@
 package fr.eni.papeterie.dal.jdbc;
 
 import fr.eni.papeterie.bo.*;
+import fr.eni.papeterie.dal.ArticleDAO;
 import fr.eni.papeterie.dal.DALException;
-import fr.eni.papeterie.dal.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArticleDaoJdbcImpl {
+public class ArticleDaoJdbcImpl implements ArticleDAO {
     private static final String SELECT_BY_ID =
             "SELECT idArticle, reference, marque, designation, prixUnitaire, qteStock, grammage, couleur, type " +
                 "FROM Articles WHERE idArticle = ?";
@@ -39,7 +39,7 @@ public class ArticleDaoJdbcImpl {
      * @throws DALException Exception.
      */
     public Article selectById(int identifiant) throws DALException {
-        Connection connection = DBConnection.connect();
+        Connection connection = JdbcTools.connect();
         Article article = null;
         try {
             PreparedStatement statement = connection.prepareStatement(SELECT_BY_ID);
@@ -52,7 +52,7 @@ public class ArticleDaoJdbcImpl {
         } catch (SQLException exception) {
             throw new DALException("Erreur lors de la sélection de l'article avec l'identifiant " + identifiant + "." , exception);
         }
-        DBConnection.disconnect(connection);
+        JdbcTools.disconnect(connection);
         return article;
     }
 
@@ -63,10 +63,12 @@ public class ArticleDaoJdbcImpl {
      * @throws DALException Exception.
      */
     private void updateOrInsert(Article article, boolean insert) throws DALException {
-        Connection connection = DBConnection.connect();
+        Connection connection = JdbcTools.connect();
         try {
-            PreparedStatement statement = insert ?
-                    connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS) : connection.prepareStatement(UPDATE);
+            PreparedStatement statement =
+                    insert ?
+                            connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS) : 
+                            connection.prepareStatement(UPDATE);
             statement.setString(1, article.getReference());
             statement.setString(2, article.getMarque());
             statement.setString(3, article.getDesignation());
@@ -84,22 +86,23 @@ public class ArticleDaoJdbcImpl {
                 statement.setNull(7, Types.VARCHAR); // Valeur nulle pour la couleur.
                 statement.setString(8, "RAMETTE"); // Valeur nulle pour la couleur.
             }
-            if (!insert) {
-                statement.setInt(9, article.getIdArticle());
-                statement.executeUpdate();
-            }
-            else  {
+            // Insert:
+            if (insert) {
                 int rows = statement.executeUpdate();
                 if (rows == 1) {
                     ResultSet resultSet = statement.getGeneratedKeys();
                     if (resultSet.next()) { article.setIdArticle(resultSet.getInt(1)); }
                 }
+            // Update:
+            } else  {
+                    statement.setInt(9, article.getIdArticle());
+                    statement.executeUpdate();
             }
             statement.close();
         } catch (SQLException exception) {
             throw new DALException("Erreur lors de la mise à jour des données.", exception);
         }
-        DBConnection.disconnect(connection);
+        JdbcTools.disconnect(connection);
     }
 
     public void update(Article article) throws DALException {
@@ -115,7 +118,7 @@ public class ArticleDaoJdbcImpl {
      * @throws DALException Exception.
      */
     public void delete(int identifiant) throws DALException {
-        Connection connection = DBConnection.connect();
+        Connection connection = JdbcTools.connect();
         try {
             PreparedStatement statement = connection.prepareStatement(DELETE);
             statement.setInt(1, identifiant);
@@ -124,7 +127,7 @@ public class ArticleDaoJdbcImpl {
         } catch (SQLException exception) {
             throw new DALException("Erreur lors de la suppression de l'article avec l'identifiant " + identifiant + "." , exception);
         }
-        DBConnection.disconnect(connection);
+        JdbcTools.disconnect(connection);
     }
 
     /**
@@ -134,7 +137,7 @@ public class ArticleDaoJdbcImpl {
      * @throws DALException Exception
      */
     private List<Article> selectAllBy(String query, String parameter) throws DALException {
-        Connection connection = DBConnection.connect();
+        Connection connection = JdbcTools.connect();
         List<Article> articles = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -149,7 +152,7 @@ public class ArticleDaoJdbcImpl {
         } catch (SQLException exception) {
             throw new DALException("Erreur lors de la sélection des articles." , exception);
         }
-        DBConnection.disconnect(connection);
+        JdbcTools.disconnect(connection);
         return articles;
     }
 

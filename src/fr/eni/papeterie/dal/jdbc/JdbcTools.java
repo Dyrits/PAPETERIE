@@ -1,20 +1,23 @@
-package fr.eni.papeterie.dal;
+package fr.eni.papeterie.dal.jdbc;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDriver;
+import fr.eni.papeterie.dal.DALException;
+import fr.eni.papeterie.dal.Settings;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBConnection {
-    static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=PAPETERIE_DB";
-    static final String USER = "sa";
-    static final String PASSWORD = "Pa$$w0rd";
+public class JdbcTools {
+    static final String DRIVER = Settings.getProperty("DRIVER");
+    static final String URL = Settings.getProperty("URL");
+    static final String USER = Settings.getProperty("USER");
+    static final String PASSWORD = Settings.getProperty("PASSWORD");
 
     public static Connection connect() throws DALException {
         try {
-            DriverManager.registerDriver(new SQLServerDriver());
-        } catch (SQLException exception) {
+            Class.forName(DRIVER);
+        } catch (ClassNotFoundException exception) {
             throw  new DALException("Erreur. Impossible de monter le driver en mémoire.", exception);
         }
         try {

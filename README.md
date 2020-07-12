@@ -5,7 +5,7 @@
 ### Cursus
 ENI | Le développement en couches et la persistance des données avec Java SE  
 ~ [Module 3 - Développement de la couche BO](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2003%20-%20Enonc%C3%A9%20TP%20-%20Papeterie%20-%20Partie%201)  
-~ [Module 4 - Développement de la couche DAL avec JDBC](https://github.com/Dyrits/PAPETERIE/blob/master/Module%2004%20-%20Enonc%C3%A9%20TP01%20-%20Papeterie%20-%20Partie%202.pdf)  
+~ [Module 4 - Développement de la couche DAL avec JDBC]()  
 
 
 ### Énoncés (par l'ENI)
@@ -33,6 +33,23 @@ ENI | Le développement en couches et la persistance des données avec Java SE
 - Vérifier votre solution avec la classe fr.eni.papeterie.dal.AppliTestDAL fournie.
 
 </details>
+<details markdown="block">
+<summary>Partie 3</summary> 
+
+- Créer l’interface ArticleDAO et définir les méthodes :
+    - selectById
+    - selectAll
+    - update
+    - insert
+    - delete
+- Utiliser l’interface ArticleDAO dans ArticleDAOJdbcImpl.
+- Externaliser la configuration de l’accès aux données en implémentant les classes :
+    - Settings
+    - JdbcTools
+- Implémenter la classe DAOFactory.
+- Vérifier votre solution avec la classe fr.eni.papeterie.dal.AppliTestDAL fournie.
+
+</details>
 
 > Plus de détails sont disponibles dans les fichiers au format PDF correspondant à chaque énoncé.
 
@@ -55,11 +72,18 @@ En plus des instructions de base, la gestion des variations de stock pour chaque
 Les fichiers DALException.java et AppliTestDAL.java ont été fournis avec l'énoncé ainsi que la requête SQL permettant de générer la table `Articles`.
 
 </details>
+<details markdown="block">
+<summary>Partie 3</summary> 
+
+Le fichier AppliTestDAL.java a été fourni avec l'énoncé.
+
+</details>
 
 ### Statut
 Partie 1 - Terminée  
-Partie 2 - Terminée 
+Partie 2 - Terminée   
+Partie 3 - Terminée
 
 #### Dernière mise à jour
-11/07/2020  
-(README | 11/07/2020)
+12/07/2020  
+(README | 12/07/2020)
