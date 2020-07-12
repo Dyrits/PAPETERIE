@@ -91,7 +91,7 @@ Le fichier AppliTestDAL.java a été fourni avec l'énoncé.
 <summary>Partie 4</summary> 
 
 Le fichier AppliTestDLL.java a été fourni avec l'énoncé.  
-En plus des instructions de base, une gestion des exceptions a été ajoutées au sein du package BO.
+En plus des instructions de base, une gestion des exceptions a été ajoutée au sein du package BO.
 
 </details>
 
