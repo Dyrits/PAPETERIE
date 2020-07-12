@@ -98,7 +98,8 @@ En plus des instructions de base, une gestion des exceptions a été ajoutée au
 ### Statut
 Partie 1 - Terminée  
 Partie 2 - Terminée   
-Partie 3 - Terminée
+Partie 3 - Terminée  
+Partie 4 - Terminée
 
 #### Dernière mise à jour
 12/07/2020  
