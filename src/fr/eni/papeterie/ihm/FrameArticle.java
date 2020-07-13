@@ -6,8 +6,6 @@ import fr.eni.papeterie.bo.Stylo;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class FrameArticle extends JFrame {
     private JTextField txtReference, txtDesignation, txtMarque, txtStock, txtPrix;
@@ -150,7 +148,7 @@ public class FrameArticle extends JFrame {
     // Text fields:
 
     public JTextField getTxt(JTextField txt) {
-        if (txt == null) { txt = new JTextField(30); }
+        if (txt == null) { return new JTextField(30); }
         return txt;
     }
 
@@ -170,16 +168,12 @@ public class FrameArticle extends JFrame {
     public JRadioButton getRadioType(JRadioButton radio, String text) {
         if (radio == null) {
             radio = new JRadioButton(text);
-            radio.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent event) {
-                    getCheckBoxGrammage80().setEnabled(!text.equals("Stylo"));
-                    getCheckBoxGrammage100().setEnabled(!text.equals("Stylo"));
-                    getComboCouleurs().setEnabled(text.equals("Stylo"));
-                }
+            radio.addActionListener(event -> {
+                getCheckBoxGrammage80().setEnabled(!text.equals("Stylo"));
+                getCheckBoxGrammage100().setEnabled(!text.equals("Stylo"));
+                getComboCouleurs().setEnabled(text.equals("Stylo"));
             });
         }
-        // radio.setEnabled(false);
         return radio;
     }
 
@@ -208,7 +202,7 @@ public class FrameArticle extends JFrame {
     // Checkboxes :
 
     public JCheckBox getCheckBoxGrammage(JCheckBox checkBox, String text) {
-        if (checkBox == null) { checkBox = new JCheckBox(text); }
+        if (checkBox == null) { return new JCheckBox(text); }
         return checkBox;
     }
 

@@ -14,6 +14,9 @@ public class ControlsArticle {
     private static final List<Article> CATALOGUE = getCatalogue();
 
 
+    /**
+     * Démarre l'écran et affiche le premier article du catalogue.
+     */
     static void start() {
         FRAME_ARTICLE.setVisible(true);
         Article initial = ControlsArticle.CATALOGUE.get(index);
@@ -45,7 +48,7 @@ public class ControlsArticle {
         Article defaultNewArticle = new Stylo("", "", "", 0.0f, 0, "bleu");
         FRAME_ARTICLE.displayArticleIHM(defaultNewArticle);
         FRAME_ARTICLE.getRadioTypeStylo().setEnabled(true);
-        FRAME_ARTICLE.getRadioTypeStylo().setEnabled(true);
+        FRAME_ARTICLE.getRadioTypeRamette().setEnabled(true);
         FRAME_ARTICLE.getBtnDelete().setEnabled(false);
         FRAME_ARTICLE.getBtnForward().setEnabled(false);
         FRAME_ARTICLE.getBtnPrevious().setEnabled(index > 0);
