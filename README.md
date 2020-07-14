@@ -8,7 +8,7 @@ ENI | Le développement en couches et la persistance des données avec Java SE
 ~ [Module 4 - Développement de la couche DAL avec JDBC](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2004%20-%20Enonc%C3%A9s%20TP%20-%20Papeterie)  
 ~ [Module 5 - Développement de la couche BLL](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2005%20-%20Enonc%C3%A9%20TP%20-%20Papeterie%20-%20Partie%204)  
 ~ [Module 6 - Couche IHM avec Swing](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2006%20-%20Enonc%C3%A9s%20TP%20-%20Papeterie)
-~ [Module 7 - Notions d'architecture MVC]()
+~ [Module 7 - Notions d'architecture MVC](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2007%20-%20Enonc%C3%A9%20TP%20-%20Papeterie%20-%20Partie%207)
 
 ### Énoncés (par l'ENI)
 
