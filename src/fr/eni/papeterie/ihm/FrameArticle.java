@@ -21,7 +21,7 @@ public class FrameArticle extends JFrame {
     public FrameArticle() {
         this.setTitle("Catalogue d'articles");
         this.setSize(new Dimension(500, 400));
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         initIHM();
     }
 

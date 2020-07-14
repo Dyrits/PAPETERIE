@@ -7,7 +7,7 @@ ENI | Le développement en couches et la persistance des données avec Java SE
 ~ [Module 3 - Développement de la couche BO](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2003%20-%20Enonc%C3%A9%20TP%20-%20Papeterie%20-%20Partie%201)  
 ~ [Module 4 - Développement de la couche DAL avec JDBC](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2004%20-%20Enonc%C3%A9s%20TP%20-%20Papeterie)  
 ~ [Module 5 - Développement de la couche BLL](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2005%20-%20Enonc%C3%A9%20TP%20-%20Papeterie%20-%20Partie%204)  
-~ [Module 6 - Couche IHM avec Swing](https://github.com/Dyrits/PAPETERIE/blob/master/Module%2006%20-%20Enonc%C3%A9%20TP01%20-%20Papeterie%20-%20Partie%205.pdf)
+~ [Module 6 - Couche IHM avec Swing](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2006%20-%20Enonc%C3%A9s%20TP%20-%20Papeterie)
 
 ### Énoncés (par l'ENI)
 
@@ -80,6 +80,20 @@ L’écran doit permettre :
     - De naviguer vers l’article suivant dans le catalogue
 
 </details>
+<details markdown="block">
+<summary>Partie 6</summary> 
+
+Réaliser l’écran catalogue ci-dessous :
+
+> Plus de détails au sein du fichier PDF correspondant.
+
+L’écran doit respecter les exigences suivantes :
+- Lister tous les articles enregistrés dans le catalogue.
+- Permettre l’utilisation d’un ascenseur vertical si la taille de l’écran n’est pas suffisante pour afficher tous les articles.
+- Interdire la modification des articles dans le tableau.
+- La première colonne affiche l’image d’un stylo ou l’image d’une ramette selon le type de l’article
+
+</details>
 
 > Plus de détails sont disponibles dans les fichiers au format PDF correspondant à chaque énoncé.
 
@@ -121,14 +135,21 @@ En plus des instructions de base, une gestion des exceptions a été ajoutée au
 Les ressources (icônes) ont été fournies avec l'énoncé.
 
 </details>
+<details markdown="block">
+<summary>Partie 6</summary> 
+
+Les ressources (icônes) ont été fournies avec l'énoncé.
+
+</details>
 
 ### Statut
 Partie 1 - Terminée  
 Partie 2 - Terminée   
 Partie 3 - Terminée  
 Partie 4 - Terminée  
-Partie 5 - Terminée
+Partie 5 - Terminée  
+Partie 6 - Terminée  
 
 #### Dernière mise à jour
-13/07/2020  
-(README | 13/07/2020)
+14/07/2020  
+(README | 14/07/2020)

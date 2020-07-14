@@ -4,12 +4,14 @@ import fr.eni.papeterie.bll.BLLException;
 import fr.eni.papeterie.bll.CatalogueManager;
 import fr.eni.papeterie.bo.Article;
 import fr.eni.papeterie.bo.Stylo;
+import fr.eni.papeterie.ihm.catalogue.FrameCatalogue;
 
 import java.util.List;
 
 public class ControlsArticle {
     static int index = 0;
     private static final FrameArticle FRAME_ARTICLE = new FrameArticle();
+    private static final FrameCatalogue FRAME_CATALOGUE = new FrameCatalogue();
     private static final CatalogueManager ARTICLE_MANAGER = getArticleManager();
     private static final List<Article> CATALOGUE = getCatalogue();
 
@@ -22,6 +24,8 @@ public class ControlsArticle {
         Article initial = ControlsArticle.CATALOGUE.get(index);
         FRAME_ARTICLE.getBtnPrevious().setEnabled(false);
         FRAME_ARTICLE.displayArticleIHM(initial);
+
+        FRAME_CATALOGUE.setVisible(true);
     }
 
     static void previousArticle() {
@@ -99,10 +103,12 @@ public class ControlsArticle {
         return _ARTICLE_MANAGER;
     }
 
-    private static List<Article> getCatalogue() {
+    public static List<Article> getCatalogue() {
+        CatalogueManager _ARTICLE_MANAGER;
         List<Article> _CATALOGUE = null;
         try {
-            _CATALOGUE = ARTICLE_MANAGER.getCatalogue();
+            _ARTICLE_MANAGER =  new CatalogueManager();
+            _CATALOGUE = _ARTICLE_MANAGER.getCatalogue();
         } catch (BLLException exception) {
             exception.printStackTrace();
         }
