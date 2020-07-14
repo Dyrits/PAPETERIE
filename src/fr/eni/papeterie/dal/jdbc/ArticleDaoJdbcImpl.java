@@ -1,14 +1,14 @@
 package fr.eni.papeterie.dal.jdbc;
 
 import fr.eni.papeterie.bo.*;
-import fr.eni.papeterie.dal.ArticleDAO;
 import fr.eni.papeterie.dal.DALException;
+import fr.eni.papeterie.dal.DAO;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArticleDaoJdbcImpl implements ArticleDAO {
+public class ArticleDaoJdbcImpl implements DAO<Article> {
     private static final String SELECT_BY_ID =
             "SELECT idArticle, reference, marque, designation, prixUnitaire, qteStock, grammage, couleur, type " +
                 "FROM Articles WHERE idArticle = ?";
@@ -38,6 +38,7 @@ public class ArticleDaoJdbcImpl implements ArticleDAO {
      * @return Article | Article correspondant à l'identifiant entré en paramètre.
      * @throws DALException Exception.
      */
+    @Override
     public Article selectById(int identifiant) throws DALException {
         Connection connection = JdbcTools.connect();
         Article article = null;
@@ -106,10 +107,12 @@ public class ArticleDaoJdbcImpl implements ArticleDAO {
         JdbcTools.disconnect(connection);
     }
 
+    @Override
     public void update(Article article) throws DALException {
         updateOrInsert(article, false);
     }
 
+    @Override
     public void insert(Article article) throws DALException {
         updateOrInsert(article, true);
     }
@@ -118,6 +121,7 @@ public class ArticleDaoJdbcImpl implements ArticleDAO {
      * @param identifiant int | Identifiant de l'article à supprimer.
      * @throws DALException Exception.
      */
+    @Override
     public void delete(int identifiant) throws DALException {
         Connection connection = JdbcTools.connect();
         try {
@@ -161,6 +165,7 @@ public class ArticleDaoJdbcImpl implements ArticleDAO {
      * @return ArrayList | Liste de l'ensemble des articles.
      * @throws DALException Exception
      */
+    @Override
     public List<Article> selectAll() throws DALException {
         return selectAllBy(SELECT_ALL, null);
     }

@@ -3,14 +3,14 @@ package fr.eni.papeterie.bll;
 import fr.eni.papeterie.bo.Article;
 import fr.eni.papeterie.bo.Ramette;
 import fr.eni.papeterie.bo.Stylo;
-import fr.eni.papeterie.dal.ArticleDAO;
+import fr.eni.papeterie.dal.DAO;
 import fr.eni.papeterie.dal.DALException;
 import fr.eni.papeterie.dal.DAOFactory;
 
 import java.util.List;
 
 public class CatalogueManager {
-    private static ArticleDAO daoArticles;
+    private static DAO daoArticles;
 
     /**
      * Constructeur initialisant une interface d'accès au catalogue d'articles.

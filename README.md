@@ -8,7 +8,8 @@ ENI | Le développement en couches et la persistance des données avec Java SE
 ~ [Module 4 - Développement de la couche DAL avec JDBC](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2004%20-%20Enonc%C3%A9s%20TP%20-%20Papeterie)  
 ~ [Module 5 - Développement de la couche BLL](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2005%20-%20Enonc%C3%A9%20TP%20-%20Papeterie%20-%20Partie%204)  
 ~ [Module 6 - Couche IHM avec Swing](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2006%20-%20Enonc%C3%A9s%20TP%20-%20Papeterie)  
-~ [Module 7 - Notions d'architecture MVC](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2007%20-%20Enonc%C3%A9%20TP%20-%20Papeterie%20-%20Partie%207)
+~ [Module 7 - Notions d'architecture MVC](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2007%20-%20Enonc%C3%A9%20TP%20-%20Papeterie%20-%20Partie%207)  
+~ [Module 8 - Notions avancées]()
 
 ### Énoncés (par l'ENI)
 
@@ -102,6 +103,24 @@ L’écran doit respecter les exigences suivantes :
 - Utiliser ce composant dans l’écran détail article.
 
 </details>
+<details markdown="block">
+<summary>Partie 8</summary> 
+
+#### Étape 1
+Créer une interface générique et la nommer DAO. Utiliser cette interface en lieu et place de ArticleDAO dans le composant ArticleDAOJdbcImpl.
+Les méthodes suivantes devront être fonctionnelles :
+- selectById
+- selectAll
+- update
+- insert
+- delete
+
+#### Étape 2
+Modifier la couche DAL de l’application pour que les méthodes suivantes, spécifiques à la gestion des articles, soient fonctionnelles :
+- selectByMarque
+- selectByMotCle
+
+</details>
 
 > Plus de détails sont disponibles dans les fichiers au format PDF correspondant à chaque énoncé.
 
@@ -164,6 +183,7 @@ Partie 4 - Terminée
 Partie 5 - Terminée  
 Partie 6 - Terminée  
 Partie 7 - Terminée  
+Partie 8 - Terminée  
 
 #### Dernière mise à jour
 14/07/2020  
