@@ -8,6 +8,7 @@ ENI | Le développement en couches et la persistance des données avec Java SE
 ~ [Module 4 - Développement de la couche DAL avec JDBC](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2004%20-%20Enonc%C3%A9s%20TP%20-%20Papeterie)  
 ~ [Module 5 - Développement de la couche BLL](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2005%20-%20Enonc%C3%A9%20TP%20-%20Papeterie%20-%20Partie%204)  
 ~ [Module 6 - Couche IHM avec Swing](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2006%20-%20Enonc%C3%A9s%20TP%20-%20Papeterie)
+~ [Module 7 - Notions d'architecture MVC]()
 
 ### Énoncés (par l'ENI)
 
@@ -94,6 +95,13 @@ L’écran doit respecter les exigences suivantes :
 - La première colonne affiche l’image d’un stylo ou l’image d’une ramette selon le type de l’article
 
 </details>
+<details markdown="block">
+<summary>Partie 7</summary> 
+
+- Créer un composant barre de boutons réutilisable.
+- Utiliser ce composant dans l’écran détail article.
+
+</details>
 
 > Plus de détails sont disponibles dans les fichiers au format PDF correspondant à chaque énoncé.
 
@@ -141,6 +149,12 @@ Les ressources (icônes) ont été fournies avec l'énoncé.
 Les ressources (icônes) ont été fournies avec l'énoncé.
 
 </details>
+<details markdown="block">
+<summary>Partie 7</summary> 
+
+Les différents classe présentes dans le diagramme de classes ont été implémentées, mais des noms différents (en anglais) ont été utilisées.
+
+</details>
 
 ### Statut
 Partie 1 - Terminée  
@@ -149,6 +163,7 @@ Partie 3 - Terminée
 Partie 4 - Terminée  
 Partie 5 - Terminée  
 Partie 6 - Terminée  
+Partie 7 - Terminée  
 
 #### Dernière mise à jour
 14/07/2020  

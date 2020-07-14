@@ -22,58 +22,58 @@ public class ControlsArticle {
     static void start() {
         FRAME_ARTICLE.setVisible(true);
         Article initial = ControlsArticle.CATALOGUE.get(index);
-        FRAME_ARTICLE.getBtnPrevious().setEnabled(false);
+        FRAME_ARTICLE.getPanelButtons().getBtnPrevious().setEnabled(false);
         FRAME_ARTICLE.displayArticleIHM(initial);
 
         FRAME_CATALOGUE.setVisible(true);
     }
 
-    static void previousArticle() {
+    static void btnPrevious() {
         if (index > 0) {
             Article previous = ControlsArticle.CATALOGUE.get(-- index);
             FRAME_ARTICLE.displayArticleIHM(previous);
-            FRAME_ARTICLE.getBtnForward().setEnabled(true);
+            FRAME_ARTICLE.getPanelButtons().getBtnForward().setEnabled(true);
         }
-        if (index == 0) { FRAME_ARTICLE.getBtnPrevious().setEnabled(false); }
-        if (index == CATALOGUE.size() - 1) { FRAME_ARTICLE.getBtnForward().setEnabled(false); }
+        if (index == 0) { FRAME_ARTICLE.getPanelButtons().getBtnPrevious().setEnabled(false); }
+        if (index == CATALOGUE.size() - 1) { FRAME_ARTICLE.getPanelButtons().getBtnForward().setEnabled(false); }
     }
 
-    static void forwardArticle() {
+    static void btnForward() {
         if (index < CATALOGUE.size()) {
             Article next = ControlsArticle.CATALOGUE.get(++ index);
             FRAME_ARTICLE.displayArticleIHM(next);
-            FRAME_ARTICLE.getBtnPrevious().setEnabled(true);
+            FRAME_ARTICLE.getPanelButtons().getBtnPrevious().setEnabled(true);
         }
-        if (index == CATALOGUE.size() - 1) { FRAME_ARTICLE.getBtnForward().setEnabled(false); }
+        if (index == CATALOGUE.size() - 1) { FRAME_ARTICLE.getPanelButtons().getBtnForward().setEnabled(false); }
     }
 
-    static void newArticle() {
+    static void btnNew() {
         index = CATALOGUE.size();
         Article defaultNewArticle = new Stylo("", "", "", 0.0f, 0, "bleu");
         FRAME_ARTICLE.displayArticleIHM(defaultNewArticle);
         FRAME_ARTICLE.getRadioTypeStylo().setEnabled(true);
         FRAME_ARTICLE.getRadioTypeRamette().setEnabled(true);
-        FRAME_ARTICLE.getBtnDelete().setEnabled(false);
-        FRAME_ARTICLE.getBtnForward().setEnabled(false);
-        FRAME_ARTICLE.getBtnPrevious().setEnabled(index > 0);
+        FRAME_ARTICLE.getPanelButtons().getBtnDelete().setEnabled(false);
+        FRAME_ARTICLE.getPanelButtons().getBtnForward().setEnabled(false);
+        FRAME_ARTICLE.getPanelButtons().getBtnPrevious().setEnabled(index > 0);
     }
 
-    static void deleteArticle() {
+    static void btnDelete() {
         try {
             ARTICLE_MANAGER.removeArticle(CATALOGUE.get(index));
             CATALOGUE.remove(index);
             // Affichage de l'article précédent, s'il existe) après suppression.
-            if (index > 0 && CATALOGUE.size() != 0) { previousArticle(); }
+            if (index > 0 && CATALOGUE.size() != 0) { btnPrevious(); }
             // Sinon : Affichage de l'article suivant, s'il existe.
-            else if (index == 0 && CATALOGUE.size() > 0) { forwardArticle(); }
+            else if (index == 0 && CATALOGUE.size() > 0) { btnForward(); }
             // Sinon: Affichage du formulaire de création d'un nouvel article.
-            else { newArticle(); }
+            else { btnNew(); }
         } catch (BLLException exception) {
             exception.printStackTrace();
         }
     }
 
-    static void saveArticle() {
+    static void btnSave() {
         Article article = FRAME_ARTICLE.getArticleIHM();
         try {
             if (CATALOGUE.size() == index) {

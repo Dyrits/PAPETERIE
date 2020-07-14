@@ -9,11 +9,11 @@ import java.awt.*;
 
 public class FrameArticle extends JFrame {
     private JTextField txtReference, txtDesignation, txtMarque, txtStock, txtPrix;
-    private JPanel panelType, panelGrammage, panelBoutons;
+    private JPanel panelType, panelGrammage;
+    private PanelButtons panelButtons;
     private JRadioButton radioTypeStylo, radioTypeRamette;
     private JCheckBox checkBoxGrammage80, checkBoxGrammage100;
     private JComboBox comboCouleurs;
-    private JButton btnPrevious, btnNew, btnSave, btnDelete, btnForward;
 
     /**
      * Constructeur.
@@ -87,7 +87,7 @@ public class FrameArticle extends JFrame {
         panelGrid.gridy = 8;
         panelGrid.gridx = 0;
         panelGrid.gridwidth = 2;
-        panel.add(getPanelBoutons(), panelGrid);
+        panel.add(getPanelButtons(), panelGrid);
         // Affectation à l'écran:
         this.setContentPane(panel);
     }
@@ -241,61 +241,36 @@ public class FrameArticle extends JFrame {
 
     // Buttons:
 
-    public JButton getBtn(String source) {
-        Icon icon = new ImageIcon(this.getClass().getResource(source));
-        return new JButton(icon);
-    }
+    public PanelButtons getPanelButtons() {
+        if (this.panelButtons == null) {
+            panelButtons = new PanelButtons();
+            panelButtons.addObserver(new IPanelButtonsObserver() {
+                @Override
+                public void btnDelete() {
+                    ControlsArticle.btnDelete();
+                }
 
-    public JPanel getPanelBoutons() {
-        if (panelBoutons == null) {
-            panelBoutons = new JPanel();
-            panelBoutons.setLayout(new FlowLayout());
-            panelBoutons.add(getBtnPrevious());
-            panelBoutons.add(getBtnNew());
-            panelBoutons.add(getBtnSave());
-            panelBoutons.add(getBtnDelete());
-            panelBoutons.add(getBtnForward());
-        }
-        return panelBoutons;
-    }
+                @Override
+                public void btnForward() {
+                    ControlsArticle.btnForward();
+                }
 
-    public JButton getBtnPrevious() {
-        if (this.btnPrevious == null) {
-            this.btnPrevious = getBtn("./resources/Back24.gif");
-            this.btnPrevious.addActionListener(event -> ControlsArticle.previousArticle());
-        }
-        return this.btnPrevious;
-    }
+                @Override
+                public void btnPrevious() {
+                    ControlsArticle.btnPrevious();
+                }
 
-    public JButton getBtnNew() {
-        if (this.btnNew == null) {
-            this.btnNew = getBtn("./resources/New24.gif");
-            this.btnNew.addActionListener(event -> ControlsArticle.newArticle());
-        }
-        return this.btnNew;
-    }
+                @Override
+                public void btnNew() {
+                    ControlsArticle.btnNew();
+                }
 
-    public JButton getBtnSave() {
-        if (this.btnSave == null) {
-            this.btnSave = getBtn("./resources/Save24.gif");
-            this.btnSave.addActionListener(event -> ControlsArticle.saveArticle());
+                @Override
+                public void btnSave() {
+                    ControlsArticle.btnSave();
+                }
+            });
         }
-        return this.btnSave;
-    }
-
-    public JButton getBtnDelete() {
-        if (this.btnDelete == null) {
-            this.btnDelete = getBtn("./resources/Delete24.gif");
-            this.btnDelete.addActionListener(event -> ControlsArticle.deleteArticle());
-        }
-        return this.btnDelete;
-    }
-
-    public JButton getBtnForward() {
-        if (this.btnForward == null) {
-            this.btnForward = getBtn("./resources/Forward24.gif");
-            this.btnForward.addActionListener(event -> ControlsArticle.forwardArticle());
-        }
-        return this.btnForward;
+        return panelButtons;
     }
 }
