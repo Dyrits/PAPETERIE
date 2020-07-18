@@ -187,4 +187,4 @@ Partie 8 - Terminée
 
 #### Dernière mise à jour
 14/07/2020  
-(README | 14/07/2020)
+(README | 18f/07/2020)

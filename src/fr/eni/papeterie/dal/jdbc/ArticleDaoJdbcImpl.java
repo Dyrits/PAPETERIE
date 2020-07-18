@@ -60,7 +60,7 @@ public class ArticleDaoJdbcImpl implements DAO<Article> {
     /**
      * Mise à jour des données de la table via une requête DML INSERT ou UPDATE.
      * @param article Article | Article correspondant à la ligne à mettre à jour ou ajouter.
-     * @param insert Booléen | "true" si la requête est de type INSERT. "false" si la requête est de type UPDATE.
+     * @param insert boolean | "true" si la requête est de type INSERT. "false" si la requête est de type UPDATE.
      * @throws DALException Exception.
      */
     private void updateOrInsert(Article article, boolean insert) throws DALException {
