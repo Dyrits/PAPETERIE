@@ -1,184 +1,41 @@
 # Papeterie
 
-## A propos de ce projet
+A stationery shop management application built in layers with Java SE, as practical work for an ENI course.
 
-### Cursus
-ENI | Le développement en couches et la persistance des données avec Java SE  
+## About The Project
 
-### Énoncés (par l'ENI)
+Practical work for the ENI course "Le développement en couches et la persistance des données avec Java SE", split into eight parts: business objects, database access with JDBC, DAO interfaces and factory, business layer, article and catalogue Swing screens, a reusable button bar component, and a generic DAO.
 
-<details markdown="block">
-<summary>Partie 1</summary>  
+The original assignments (in French, with class diagrams) are available in the repository:
 
-- Créer le projet papeterie avec Eclipse.
-- Créer le package fr.eni.papeterie.bo.
-- Créer les classes Article, Ramette, Stylo, Ligne et Panier en s'aidant du diagramme de classe fourni.
-- Vérifier le fonctionnement des classes avec le composant AppliTestBO fourni.
+- [Module 03 - Partie 1](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2003%20-%20Enonc%C3%A9%20TP)
+- [Module 04 - Parties 2 and 3](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2004%20-%20Enonc%C3%A9s%20TP)
+- [Module 05 - Partie 4](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2005%20-%20Enonc%C3%A9%20TP)
+- [Module 06 - Parties 5 and 6](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2006%20-%20Enonc%C3%A9s%20TP)
+- [Module 07 - Partie 7](https://github.com/Dyrits/PAPETERIE/tree/master/Module%2007%20-%20Enonc%C3%A9%20TP)
+- [Module 08 - Partie 8](https://github.com/Dyrits/PAPETERIE/blob/master/Module%2008%20-%20Enonc%C3%A9%20TP%20-%20Papeterie%20-%20Partie%208.pdf)
 
-</details>
-<details markdown="block">
-<summary>Partie 2</summary>  
+### Notes from the author
 
-- Sous SQL Server, créer une base de données et la nommer PAPETERIE_DB.
-- Créer la table Articles à l’aide du fichier script.sql fourni.
-- Dans le projet papeterie, implémenter la classe fr.eni.papeterie.dal.jdbc.ArticleDaoJdbcImpl pour que les méthodes suivantes soient fonctionnelles :
-    - selectById : sélectionne un article par son identifiant
-    - selectAll : sélectionne tous les articles de la table Articles
-    - update : modifie les attributs d’un article
-    - insert : ajoute un article en base de données et affecte à l'article l’identifiant créé par la base de données
-    - delete : supprime un article en base de données
-- Vérifier votre solution avec la classe fr.eni.papeterie.dal.AppliTestDAL fournie.
+- The project was built from scratch following the course's specific instructions.
+- Part 1: stock variation handling for each article and the basket total were added beyond the base instructions.
+- Part 4: exception handling was added within the BO package.
+- Parts 5 and 6: the icons were provided with the assignment.
+- Part 7: the classes from the class diagram were implemented with different (English) names.
 
-</details>
-<details markdown="block">
-<summary>Partie 3</summary> 
+### Status
 
-- Créer l’interface ArticleDAO et définir les méthodes :
-    - selectById
-    - selectAll
-    - update
-    - insert
-    - delete
-- Utiliser l’interface ArticleDAO dans ArticleDAOJdbcImpl.
-- Externaliser la configuration de l’accès aux données en implémentant les classes :
-    - Settings
-    - JdbcTools
-- Implémenter la classe DAOFactory.
-- Vérifier votre solution avec la classe fr.eni.papeterie.dal.AppliTestDAL fournie.
+From the author's notes: parts 1 to 8 - Completed.
 
-</details>
-<details markdown="block">
-<summary>Partie 4</summary> 
+## Built With
 
-- À l’aide du diagramme de classes fourni, implémenter la couche BLL pour que les exigences suivantes soient respectées :
-    - Les attributs des articles sont obligatoires.
-    - Le grammage pour une ramette et la quantité en stock attendent des valeurs positives.
-    - Un catalogue est une liste d’articles gérée en mémoire et extraite à partir d’une source de données.
+- Java (SE)
+- JDBC / SQL Server
 
-</details>
-<details markdown="block">
-<summary>Partie 5</summary> 
+## License
 
-Réaliser l’écran article ci-dessous :  
+No license file is present in this repository.
 
-> Plus de détails au sein du fichier PDF correspondant.
+## Contact
 
-L’écran doit permettre :
-- De naviguer vers l’article précédent dans le catalogue :
-    - La sélection du type est inactive dans le cadre de la navigation entre articles.
-    - La sélection du grammage est inactive pour un stylo.
-    - La sélection de la couleur est inactive pour une ramette.
-- De créer un nouvel article :
-    - La sélection du type Stylo ou Ramette se fait via des boutons radio.
-    - Selon le type, rendre actif ou inactif la saisie du grammage et de la couleur.Le développement en couches et la persistance des données avec Java SE
-- D’enregistrer les modifications d’un article existant ou d’un nouvel article.
-    - De supprimer l’article courant.
-    - De naviguer vers l’article suivant dans le catalogue
-
-</details>
-<details markdown="block">
-<summary>Partie 6</summary> 
-
-Réaliser l’écran catalogue ci-dessous :
-
-> Plus de détails au sein du fichier PDF correspondant.
-
-L’écran doit respecter les exigences suivantes :
-- Lister tous les articles enregistrés dans le catalogue.
-- Permettre l’utilisation d’un ascenseur vertical si la taille de l’écran n’est pas suffisante pour afficher tous les articles.
-- Interdire la modification des articles dans le tableau.
-- La première colonne affiche l’image d’un stylo ou l’image d’une ramette selon le type de l’article
-
-</details>
-<details markdown="block">
-<summary>Partie 7</summary> 
-
-- Créer un composant barre de boutons réutilisable.
-- Utiliser ce composant dans l’écran détail article.
-
-</details>
-<details markdown="block">
-<summary>Partie 8</summary> 
-
-#### Étape 1
-Créer une interface générique et la nommer DAO. Utiliser cette interface en lieu et place de ArticleDAO dans le composant ArticleDAOJdbcImpl.
-Les méthodes suivantes devront être fonctionnelles :
-- selectById
-- selectAll
-- update
-- insert
-- delete
-
-#### Étape 2
-Modifier la couche DAL de l’application pour que les méthodes suivantes, spécifiques à la gestion des articles, soient fonctionnelles :
-- selectByMarque
-- selectByMotCle
-
-</details>
-
-> Plus de détails sont disponibles dans les fichiers au format PDF correspondant à chaque énoncé.
-
-### Technologie principale
-- Java
-
-### Détails | Commentaires
-Ce projet a été construit à partir de zéro en suivant des instructions spécifiques.   
-
-<details markdown="block">
-<summary>Partie 1</summary> 
-
-Le fichier AppliTestBo.java a été fourni avec l'énoncé.  
-En plus des instructions de base, la gestion des variations de stock pour chaque article et du montant du panier ont été ajoutés.
-
-</details>
-<details markdown="block">
-<summary>Partie 2</summary> 
-
-Les fichiers DALException.java et AppliTestDAL.java ont été fournis avec l'énoncé ainsi que la requête SQL permettant de générer la table `Articles`.
-
-</details>
-<details markdown="block">
-<summary>Partie 3</summary> 
-
-Le fichier AppliTestDAL.java a été fourni avec l'énoncé.
-
-</details>
-<details markdown="block">
-<summary>Partie 4</summary> 
-
-Le fichier AppliTestDLL.java a été fourni avec l'énoncé.  
-En plus des instructions de base, une gestion des exceptions a été ajoutée au sein du package BO.
-
-</details>
-<details markdown="block">
-<summary>Partie 5</summary> 
-
-Les ressources (icônes) ont été fournies avec l'énoncé.
-
-</details>
-<details markdown="block">
-<summary>Partie 6</summary> 
-
-Les ressources (icônes) ont été fournies avec l'énoncé.
-
-</details>
-<details markdown="block">
-<summary>Partie 7</summary> 
-
-Les différents classe présentes dans le diagramme de classes ont été implémentées, mais des noms différents (en anglais) ont été utilisées.
-
-</details>
-
-### Statut
-Partie 1 - Terminée  
-Partie 2 - Terminée   
-Partie 3 - Terminée  
-Partie 4 - Terminée  
-Partie 5 - Terminée  
-Partie 6 - Terminée  
-Partie 7 - Terminée  
-Partie 8 - Terminée  
-
-#### Dernière mise à jour
-14/07/2020  
-(README | 18f/07/2020)
+Dylan J. Gerrits - [GitHub](https://github.com/Dyrits)
